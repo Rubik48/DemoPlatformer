@@ -58,8 +58,6 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Ground ground))

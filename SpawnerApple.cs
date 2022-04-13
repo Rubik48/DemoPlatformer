@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class SpawnerApple : MonoBehaviour
 {
     [SerializeField] private Apple _templateApple;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private GameObject _container;
 
+    public int CountApple { get; private set; }
+
     private void Awake()
     {
+        CountApple = _spawnPoints.Length;
         SpawnApple();
     }
 
