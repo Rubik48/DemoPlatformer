@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e476a3dccfa317945a350ca245a59446
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _startPoint: {instanceID: 0}
+  - _virtualGuy: {instanceID: 0}
+  - _pinkMan: {instanceID: 0}
+  - _maskDude: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
