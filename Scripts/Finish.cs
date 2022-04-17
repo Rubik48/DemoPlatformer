@@ -11,13 +11,13 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Player player))
         {
-            if (_appleDisplay.CountApple == _goalApple)
+            if (_appleDisplay.Count == _goalApple)
             {
                 EndGame.Load();
             }
             else
             {
-                EventsManager.SendOnDeadPlayer();
+                PlayerDeath.SendOnPlayerDied();
             }
 
         }

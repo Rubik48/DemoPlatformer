@@ -33,7 +33,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void Update()
     {
-        IdleAnimation();
+        Idle();
 
         if (Input.GetKey(KeyCode.Space) && _touchGround)
         {
@@ -74,7 +74,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    public void IdleAnimation()
+    public void Idle()
     {
         _valueForAnimator = _stopAnimation;
         _animator.SetFloat(Speed, _valueForAnimator);

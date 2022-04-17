@@ -6,24 +6,27 @@ public class AppleDisplay : MonoBehaviour
     [SerializeField] private SpawnerApple _spawner;
     [SerializeField] private TMP_Text _showText;
 
-    public int CountApple { get; private set; }
+    public int Count { get; private set; }
 
     private void Start()
     {
-        CountApple = _spawner.CountApple;
+        Count = _spawner.CountApple;
         _showText.text = "—оберите все €блоки!";
-
-        EventsManager.OnRemoveApple += OnCountChange;
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        EventsManager.OnRemoveApple -= OnCountChange;
+        Apple.AppleRemoved += OnCountChange;
+    }
+
+    private void OnDisable()
+    {
+        Apple.AppleRemoved -= OnCountChange;
     }
 
     private void OnCountChange()
     {
-        CountApple--;
-        _showText.text = "яблок осталось: " + CountApple;
+        Count--;
+        _showText.text = "яблок осталось: " + Count;
     }
 }

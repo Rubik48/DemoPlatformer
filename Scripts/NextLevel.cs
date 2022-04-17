@@ -11,14 +11,14 @@ public class NextLevel : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Player player))
         {
-            if (_appleDisplay.CountApple == _goalApple)
+            if (_appleDisplay.Count == _goalApple)
             {
                 Level2.Load();
             }
             else
             {
                 Destroy(player.gameObject);
-                EventsManager.SendOnDeadPlayer();
+                PlayerDeath.SendOnPlayerDied();
             }
             
         }

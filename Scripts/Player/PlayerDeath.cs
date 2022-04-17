@@ -1,14 +1,16 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MovementPlayer))]
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField] private float _delayDied;
+    [SerializeField] private float _delay;
 
     private Animator _animator;
     private MovementPlayer _movementPlayer;
+
+    public static event Action PlayerDied;
 
     private const string Died = nameof(Died);
 
@@ -22,24 +24,25 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Trap trap))
         {
-            StartCoroutine(Death());
+            _movementPlayer.enabled = false;
+
+            _movementPlayer.Idle();
+
+            _animator.SetTrigger(Died);
+
+            SendOnPlayerDied();
+
+            Invoke("EnableMove", _delay);
         }
     }
 
-    private IEnumerator Death()
+    private void EnableMove()
     {
-        _movementPlayer.enabled = false;
-
-        _movementPlayer.IdleAnimation();
-
-        _animator.SetTrigger(Died);
-
-        yield return new WaitForSeconds(_delayDied);
-
-        EventsManager.SendOnDeadPlayer();
-
         _movementPlayer.enabled = true;
+    }
 
-        StopCoroutine(Death());
+    public static void SendOnPlayerDied()
+    {
+        PlayerDied?.Invoke();
     }
 }
