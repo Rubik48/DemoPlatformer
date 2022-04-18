@@ -32,7 +32,7 @@ public class PlayerDeath : MonoBehaviour
 
             SendOnPlayerDied();
 
-            Invoke("EnableMove", _delay);
+            Invoke(nameof(EnableMove), _delay);
         }
     }
 

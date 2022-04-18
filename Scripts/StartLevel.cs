@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class StartLevel : MonoBehaviour
@@ -9,12 +8,7 @@ public class StartLevel : MonoBehaviour
     [SerializeField] private Player _maskDude;
 
     private Player _player;
-    private const string Skin = nameof(Skin);
-
     
-
-    public Transform StartPoint => _startPoint;
-
     private void Awake()
     {
         CreatePlayer();
@@ -34,7 +28,7 @@ public class StartLevel : MonoBehaviour
 
     private void CreatePlayer()
     {
-        switch (PlayerPrefs.GetInt(Skin))
+        switch (PlayerPrefs.GetInt(SkinSelected.Skin))
         {
             case 1:
                 _player = Instantiate(_virtualGuy, _startPoint.position, Quaternion.identity);
